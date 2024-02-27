@@ -1,3 +1,5 @@
+using MyTravelBlog.ApplicationCore.Interfaces;
+
 namespace MyTravelBlog.ApplicationCore.Entities;
 
 public class Country : BaseEntity, IAggregateRoot

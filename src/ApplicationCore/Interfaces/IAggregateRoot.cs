@@ -1,3 +1,3 @@
-namespace MyTravelBlog.ApplicationCore.Entities;
+namespace MyTravelBlog.ApplicationCore.Interfaces;
 
 public interface IAggregateRoot {}
