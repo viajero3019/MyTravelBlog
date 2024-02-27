@@ -13,7 +13,7 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggreg
         _context = context;
     }
 
-    public async Task<ICollection<T>> ListAllAsync() => await _context.Set<T>().ToListAsync();
+    public async Task<IEnumerable<T>> ListAllAsync() => await _context.Set<T>().ToListAsync();
 
     public async Task<T> GetByIdAsync(int id) => (await _context.Set<T>().FindAsync(id))!;
 

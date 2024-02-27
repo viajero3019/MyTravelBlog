@@ -1,4 +1,14 @@
+using MyTravelBlog.Infrastructure;
+using MyTravelBlog.Web.Configuration;
+using MyTravelBlog.Web.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+if(builder.Environment.IsDevelopment())
+{
+    Dependencies.ConfigureServices(builder.Configuration, builder.Services);
+}
+builder.Services.AddCoreServices();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -21,5 +31,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+PreDbExtensions.AddContextPopulation(app);
 
 app.Run();

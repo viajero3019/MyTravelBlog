@@ -1,0 +1,38 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Countries";
+}
+<div class="container">
+
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Continent</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.CountryModel.Any())
+        {
+            @foreach(var country in Model.CountryModel)
+            {
+                <tr>
+                    @* <th scope="row">1</th> *@
+                    <td>@country.Name</td>
+                    <td>@country.Description</td>
+                    <td>@country.ContinentId</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+</div>
