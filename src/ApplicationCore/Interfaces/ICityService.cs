@@ -2,7 +2,7 @@ using MyTravelBlog.ApplicationCore.Entities;
 
 namespace MyTravelBlog.ApplicationCore.Interfaces;
 
-public interface ICountryService
+public interface ICityService
 {
-    Task<IEnumerable<Country>> GetFitlerAsync(int continentId);
+    Task<IEnumerable<City>> GetFitlerAsync(int countryId);
 }

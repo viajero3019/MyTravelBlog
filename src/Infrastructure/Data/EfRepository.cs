@@ -16,6 +16,8 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggreg
     public async Task<IEnumerable<T>> ListAllAsync() => await _context.Set<T>().ToListAsync();
 
     public async Task<T> GetByIdAsync(int id) => (await _context.Set<T>().FindAsync(id))!;
+    
+    public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec) => await _context.Set<T>().Where(spec.Criteria!).ToListAsync();
 
     public async Task<T> AddAsync(T entity)
     {
@@ -36,4 +38,5 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggreg
         await _context.SaveChangesAsync();
         return entity;
     }
+
 }

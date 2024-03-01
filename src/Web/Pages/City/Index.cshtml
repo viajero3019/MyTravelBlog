@@ -1,11 +1,11 @@
-@page "{id}"
+@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Countries";
+    ViewData["Title"] = "City";
 }
 <div class="container">
 
-    <h1>@Model.ContinentModel.Name</h1>
+    <h1>Cities</h1>
     <table class="table table-striped">
     <thead>
         <tr>
@@ -14,14 +14,14 @@
         </tr>
     </thead>
     <tbody>
-        @if(Model.ContinentModel.Countries.Any())
+        @if(Model.CityModel.Any())
         {
-            @foreach(var country in Model.ContinentModel.Countries)
+            @foreach(var c in Model.CityModel)
             {
                 <tr>
                     @* <th scope="row">1</th> *@
-                    <td><a asp-page="/City/Index" asp-route-id="@country.Id">@country.Name</a></td>
-                    <td>@country.Description</td>
+                    <td>@c.Name</td>
+                    <td>@c.Description</td>
                 </tr>
             }
         }

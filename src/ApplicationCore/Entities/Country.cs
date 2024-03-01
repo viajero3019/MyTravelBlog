@@ -7,4 +7,6 @@ public class Country : BaseEntity, IAggregateRoot
     public string? Name { get; set; }
     public string? Description { get; set; }
     public int ContinentId { get; set; }
+    public List<City>? Cities { get; set; }
+
 }

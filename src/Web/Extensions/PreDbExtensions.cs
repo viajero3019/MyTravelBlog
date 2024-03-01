@@ -18,7 +18,7 @@ public static class PreDbExtensions
             }
             catch(Exception)
             {
-                Console.WriteLine("Population Failed");
+                 app.Logger.LogError("Population Failed");
                 throw;
             }
         }
