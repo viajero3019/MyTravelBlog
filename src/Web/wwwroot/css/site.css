@@ -20,3 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}

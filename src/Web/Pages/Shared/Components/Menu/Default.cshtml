@@ -1,0 +1,34 @@
+@model List<MyTravelBlog.ApplicationCore.Entities.Continent>
+    
+<div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
+        Destinations
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @if(!Model.Any())
+        {
+            <li><a class="dropdown-item" href="#">THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</a></li>
+        }
+        else
+        {
+            @foreach(var continent in Model)
+            {
+                <li>
+                    @* <a class="dropdown-item" href="#"></a> *@
+                    <div class="btn-group dropend">
+                         <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            @continent.Name
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach(var coutries in continent.Countries!)
+                        {
+                            <li><a class="dropdown-item" href="#">@coutries.Name</a></li>
+                        }
+                        </ul>
+                    </div>
+
+                </li>
+            }
+        }
+    </ul>
+</div>

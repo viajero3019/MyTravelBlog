@@ -1,5 +1,6 @@
 using MyTravelBlog.ApplicationCore.Entities;
 using MyTravelBlog.ApplicationCore.Interfaces;
+using MyTravelBlog.ApplicationCore.Specifications;
 
 namespace MyTravelBlog.ApplicationCore.Services;
 
@@ -12,9 +13,15 @@ public class ContinentService : IContinentService, ICrudService<Continent>
         _repository = repository;
     }
 
-    public Task<IEnumerable<Continent>> GetAllAsync() => _repository.ListAllAsync();
+    public async Task<IEnumerable<Continent>> GetAllAsync() => await _repository.ListAllAsync();
 
     public Task<Continent> GetByIdAsync(int id) => _repository.GetByIdAsync(id);
+
+    public async Task<IEnumerable<Continent>> GetWithIncludeAsync()
+    {
+        var spec = new ContinentIncludeSpecification();
+        return await _repository.ListWithIncludeAsync(spec);
+    }
 
     public Task<IEnumerable<Continent>> GetFitlerAsync(params object[] filters)
     {

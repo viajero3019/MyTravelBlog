@@ -16,8 +16,9 @@ public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggreg
     public async Task<IEnumerable<T>> ListAllAsync() => await _context.Set<T>().ToListAsync();
 
     public async Task<T> GetByIdAsync(int id) => (await _context.Set<T>().FindAsync(id))!;
-    
-    public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec) => await _context.Set<T>().Where(spec.Criteria!).ToListAsync();
+
+    public async Task<IReadOnlyList<T>> ListWithFilterAsync(ISpecification<T> spec) => await _context.Set<T>().Where(spec.Criteria!).ToListAsync();
+    public async Task<IReadOnlyList<T>> ListWithIncludeAsync(ISpecification<T> spec) => await _context.Set<T>().Include(spec.IncludeStrings!).ToListAsync();
 
     public async Task<T> AddAsync(T entity)
     {

@@ -31,7 +31,7 @@ public class CountryService : ICountryService, ICrudService<Country>
     public async Task<IEnumerable<Country>> GetFitlerAsync(int continentId)
     {
         var spec = new CountryFilterSpecification(continentId);
-        var res = await _repository.ListAsync(spec);
+        var res = await _repository.ListWithFilterAsync(spec);
         return res;
     }
 
