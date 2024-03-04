@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTravelBlog.Infrastructure.Data;
+using MyTravelBlog.Infrastructure.Identity;
 
 namespace MyTravelBlog.Infrastructure;
 
@@ -13,6 +14,7 @@ public static class Dependencies
 
         if(useOnlyInMemoryDatabase)
         {
+            services.AddDbContext<AppIdentityDbContext>(context => context.UseInMemoryDatabase("Identity"));
             services.AddDbContext<TravelContext>(context => context.UseInMemoryDatabase("Travel"));
         }
 

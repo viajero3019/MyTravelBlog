@@ -9,7 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspNetVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFramworkCoreVersion)" />
-    
   </ItemGroup>
 </Project>

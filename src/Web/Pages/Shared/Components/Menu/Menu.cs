@@ -20,10 +20,6 @@ public class Menu : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync()
     {
         LocationModel = (await _continentService.GetWithIncludeAsync()).ToList();
-        foreach (var item in LocationModel)
-        {
-            Console.WriteLine("Countries: ", item.Name!);
-        }
         return View(LocationModel);
     }
 }

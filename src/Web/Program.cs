@@ -4,14 +4,25 @@ using MyTravelBlog.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-if(builder.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
     Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 }
+
+builder.Services.AddAuthSettings();
+builder.Services.AddCookieSettings();
+
 builder.Services.AddCoreServices();
 
+builder.Services.AddAuthentication();
+
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Continent");
+    options.Conventions.AuthorizeFolder("/Country");
+    options.Conventions.AuthorizeFolder("/City");
+});
 
 var app = builder.Build();
 
@@ -28,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
